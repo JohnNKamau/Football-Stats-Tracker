@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Football Stats Tracker</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>⚽ Football Stats Tracker</h1>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Teams</h2>
+      <button id="loadTeams">Load Teams</button>
+      <div id="teams" class="grid"></div>
+    </section>
+
+    <section class="card">
+      <h2>Fixtures</h2>
+      <button id="loadFixtures">Load Fixtures</button>
+      <div id="fixtures" class="grid"></div>
+    </section>
+
+    <section class="card">
+      <h2>Search Player</h2>
+      <input type="text" id="playerInput" placeholder="Enter player name">
+      <button id="searchPlayer">Search</button>
+      <div id="playerResult"></div>
+    </section>
+
+    <section class="card">
+      <h2>⭐ Favorite Player</h2>
+      <div id="favoritePlayer"></div>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
