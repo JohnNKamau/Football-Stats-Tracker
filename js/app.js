@@ -22,28 +22,27 @@ from "./ui.js";
 let premierLeagueTeams = [];
 
 
-// // Load Teams
-// document.getElementById("loadTeams").onclick = async () => {
-//   const teams = await fetchTeams();
+// Load Teams
+document.getElementById("loadTeams").onclick = async () => {
+  const teams = await fetchTeams();
 
 
-// premierLeagueTeams = teams; // this only shows premier league teams
+premierLeagueTeams = teams; // this only shows premier league teams
 
 
-//   renderTeams(teams, (team) => {
-//     renderTeamDetails(team);
-//   });
-// };
+  renderTeams(teams, (team) => {
+    renderTeamDetails(team);
+  });
+};
 
 
 // Search Team
 
-document.getElementById("searchTeam").onclick = () => {
-  const name = document.getElementById("teamSearchInput").value.toLowerCase();
 
-  const results = premierLeagueTeams.filter(team =>
-    team.team.name.toLowerCase().includes(name)
-  );
+document.getElementById("searchTeam").onclick = async () => {
+  const name = document.getElementById("teamSearchInput").value;
+
+  const results = await searchTeamByName(name);
 
   renderTeamSearch(results, (team) => {
     renderTeamDetails(team);
@@ -79,4 +78,4 @@ async function init() {
   
 }
 
-init();
+// init();
