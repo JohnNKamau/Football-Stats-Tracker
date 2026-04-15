@@ -6,8 +6,10 @@ export function renderTeams(teams, onClick) {
   teams.forEach(team => {
     const div = document.createElement("div");
     div.className = "item";
-    div.textContent = team.team.name;
-
+    div.innerHTML = `
+    <img src="${team.team.logo}" width="50">
+      <p>${team.team.name}</p>
+`;
     div.onclick = () => onClick(team);
 
     container.appendChild(div);
@@ -39,8 +41,14 @@ export function renderFixtures(fixtures) {
     div.className = "item";
 
     div.innerHTML = `
-      <p>${match.teams.home.name} vs ${match.teams.away.name}</p>
-      <small>${date}</small>
+<p>
+  <img src="${match.teams.home.logo}" width="25">
+  ${match.teams.home.name} vs 
+  <img src="${match.teams.away.logo}" width="25">
+  ${match.teams.away.name}
+</p>
+
+    <small>${date}</small>
     `;
 
     container.appendChild(div);
@@ -62,12 +70,16 @@ export function renderPlayer(players) {
   const div = document.createElement("div");
   div.className = "item";
 
-  div.innerHTML = `
-    <h3>${p.player.name}</h3>
-    <p>Age: ${p.player.age}</p>
-    <p>Goals: ${p.statistics?.[0]?.goals?.total ?? "N/A"}</p>
-    <button id="saveFav">Save</button>
-  `;
+  const goals = p.statistics?.[0]?.goals?.total ?? "N/A";
+
+div.innerHTML = `
+  <img src="${p.player.photo}" width="100">
+  <h3>${p.player.name}</h3>
+  <p>Age: ${p.player.age}</p>
+  <p>Goals: ${goals}</p>
+  <button id="saveFav">Save</button>
+`;
+
 
   container.appendChild(div);
 
@@ -92,11 +104,14 @@ export function renderFavorite() {
   const div = document.createElement("div");
   div.className = "item";
 
-  div.innerHTML = `
-    <h3>${player.player.name}</h3>
-    <p>Goals: ${player.statistics?.[0]?.goals?.total ?? "N/A"}</p>
-    <button id="removeFav">Remove</button>
-  `;
+  const goals = player.statistics?.[0]?.goals?.total ?? "N/A";
+
+div.innerHTML = `
+  <img src="${player.player.photo}" width="100">
+  <h3>${player.player.name}</h3>
+  <p>Goals: ${goals}</p>
+  <button id="removeFav">Remove</button>
+`;
 
   container.appendChild(div);
 
