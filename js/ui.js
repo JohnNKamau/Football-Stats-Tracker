@@ -34,7 +34,7 @@ export function renderFixtures(fixtures) {
   const container = document.getElementById("fixtures");
   container.innerHTML = "";
 
-  fixtures.slice(0, 20).forEach(match => {
+  fixtures.slice(0, 80).forEach(match => {
     const date = new Date(match.fixture.date).toLocaleString();
 
     const div = document.createElement("div");
