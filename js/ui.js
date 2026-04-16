@@ -72,14 +72,16 @@ export function renderPlayer(players) {
 
   const goals = p.statistics?.[0]?.goals?.total ?? "N/A";
 
+const teamName = p.statistics?.[0]?.team?.name ?? "Unknown";
+
 div.innerHTML = `
   <img src="${p.player.photo}" width="100">
   <h3>${p.player.name}</h3>
+  <p>Team: ${teamName}</p>
   <p>Age: ${p.player.age}</p>
   <p>Goals: ${goals}</p>
   <button id="saveFav">Save</button>
 `;
-
 
   container.appendChild(div);
 
@@ -106,9 +108,12 @@ export function renderFavorite() {
 
   const goals = player.statistics?.[0]?.goals?.total ?? "N/A";
 
+const teamName = player.statistics?.[0]?.team?.name ?? "Unknown";
+
 div.innerHTML = `
   <img src="${player.player.photo}" width="100">
   <h3>${player.player.name}</h3>
+  <p>Team: ${teamName}</p>
   <p>Goals: ${goals}</p>
   <button id="removeFav">Remove</button>
 `;
